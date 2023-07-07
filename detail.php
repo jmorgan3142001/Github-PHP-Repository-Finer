@@ -15,6 +15,8 @@
 
 require 'DBConnect.php';
 
+$this_url = $_SERVER['SERVER_NAME'];
+
 //Connect to the database and read the row at the specified GET id
 $mysqli = DBConnect();
 $sql = 'select * from repos where id = '.$_REQUEST['id'];
@@ -33,9 +35,16 @@ echo "<tr><th scope='row'>Date Created</th><td>".$row['created_date']."</td></tr
 echo "<tr><th scope='row'>Last Updated</th><td>".$row['last_push_date']."</td></tr>";
 echo "<tr><th scope='row'>Description</th><td>".$row['description']."</td></tr>";
 echo "<tr><th scope='row'>Star Count</th><td>".$row['stars']."</td></tr>";
+if($_REQUEST['id'] < 1){
+    echo "<tr><td></td><td class='text-right'><a href='/detail.php?id=".($_REQUEST['id']+1)."'>Next-></a></td></tr>";
+} else if($_REQUEST['id'] > 98){
+    echo "<tr><td><a href='/detail.php?id=".($_REQUEST['id']-1)."'><-Previous</a></td><td class='text-right'></td></tr>";
+} else {
+    echo "<tr><td><a href='/detail.php?id=".($_REQUEST['id']-1)."'><-Previous</a></td><td class='text-right'><a href='/detail.php?id=".($_REQUEST['id']+1)."'>Next-></a></td></tr>";
+}
 echo "</table>";
 
-echo "<h4 class='mx-auto w-25 border border-dark p-3 m-3 text-center'>Click <a href='javascript:history.back(-1)'><u>HERE</u></a> to return the the last page</h4>";
+echo "<h4 class='mx-auto w-25 border border-dark p-3 m-3 text-center'>Click <a href='index.php'><u>HERE</u></a> to return the the home page</h4>";
 
 $mysqli->close();
 
