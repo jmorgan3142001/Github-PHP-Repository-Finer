@@ -23,19 +23,19 @@ if($query_data == false) die('DB Error: '.$mysqli->error);
 
 $row = $query_data->fetch_assoc();
 
-echo "<h2 align='center'>Details for the <u>".$row['name']."</u> Repository</h2>";
+echo "<h1 class='bg-dark text-light w-50 m-3 p-3 mx-auto text-center rounded'>Details for the <b><u>".$row['name']."</u></b> Repository</h1>";
 
-echo "<table border='1' align='center'>";
-echo "<tr><td>Rank</td><td>".($row['id'] + 1)."</td></tr>";
-echo "<tr><td>Name</td><td>".$row['name']."</td></tr>";
-echo "<tr><td>URL</td><td><a target='_blank' href='".$row['url']."'>".$row['url']."</a></td></tr>";
-echo "<tr><td>Date Created</td><td>".$row['created_date']."</td></tr>";
-echo "<tr><td>Last Updated</td><td>".$row['last_push_date']."</td></tr>";
-echo "<tr><td>Description</td><td>".$row['description']."</td></tr>";
-echo "<tr><td>Star Count</td><td>".$row['stars']."</td></tr>";
+echo "<table border='1' class='table table-striped w-50 mx-auto'><thead class='thead-dark'><tr><th></th><th></th></tr></thead>";
+echo "<tr><th scope='row'>Rank</th><td>".($row['id'] + 1)."</td></tr>";
+echo "<tr><th scope='row'>Name</th><td>".$row['name']."</td></tr>";
+echo "<tr><th scope='row'>URL</th><td><a target='_blank' href='".$row['url']."'>".$row['url']."</a></td></tr>";
+echo "<tr><th scope='row'>Date Created</th><td>".$row['created_date']."</td></tr>";
+echo "<tr><th scope='row'>Last Updated</th><td>".$row['last_push_date']."</td></tr>";
+echo "<tr><th scope='row'>Description</th><td>".$row['description']."</td></tr>";
+echo "<tr><th scope='row'>Star Count</th><td>".$row['stars']."</td></tr>";
 echo "</table>";
 
-echo "<h4 align='center'>Click <a href='javascript:history.back(-1)'>HERE</a> to return the the previous page</h4>";
+echo "<h4 class='mx-auto w-25 border border-dark p-3 m-3 text-center'>Click <a href='javascript:history.back(-1)'><u>HERE</u></a> to return the the last page</h4>";
 
 $mysqli->close();
 

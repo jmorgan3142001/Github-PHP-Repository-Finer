@@ -18,8 +18,8 @@ require 'DBConnect.php';
 $url_request = explode("/", $_SERVER['REQUEST_URI']);
 $url = $url_request[0];
 
-echo "<h2 align='center'>Top 100 Public PHP Github Repositories</h2>";
-echo "<h4 align='center'>Click <a href='".$url."/db_refresh.php'>HERE</a> to refresh the database</h4>";
+echo "<h1 class='bg-dark text-light w-50 m-3 p-3 mx-auto text-center rounded'>Top <u>100</u> Public PHP Github Repositories</h2>";
+echo "<h5 class='mx-auto w-25 border border-dark p-1 m-3 text-center'>Click <a href='".$url."/db_refresh.php'><u>HERE</u></a> to refresh the database</h5>";
 
 //Retrieves all of the data from the repos table
 $mysqli = DBConnect();
@@ -27,10 +27,10 @@ $sql = 'select * from repos order by id';
 $query_data = $mysqli->query($sql);
 if($query_data == false) die('DB Error: '.$mysqli->error);
 
-echo "<table border='1' align='center'>";
-echo "<tr><th></th><th>Name</th><th>&nbsp# of Stars&nbsp</th></tr>";
+echo "<table border='1' class='table table-striped table-sm w-25 mx-auto'>";
+echo "<thead class='thead-dark'><tr><th scope='col'>Rank</th><th scope='col'>Name</th><th scope='col'>&nbsp# of Stars&nbsp</th></tr></thead>";
 while ($row = $query_data->fetch_assoc()) {
-    echo "<tr><td>".($row['id']+1)."</td><td><a href='".$url."detail.php/?id=".$row['id']."'>".$row['name']."</a></td><td align='center'>".$row['stars']."</td></tr>";
+    echo "<tr><th scope='row'>".($row['id']+1)."</th><td><a href='".$url."detail.php/?id=".$row['id']."'>".$row['name']."</a></td><td>".$row['stars']."</td></tr>";
 }
 echo "</table>";
 
