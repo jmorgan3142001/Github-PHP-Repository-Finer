@@ -6,7 +6,7 @@ require 'DBConnect.php';
 $this_url = $_SERVER['SERVER_NAME'];
 
 //open api connection
-$token = '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';
+$token = 'YOUR_TOKEN_HERE';
 $client = new \GuzzleHttp\Client([
     'base_uri' => 'https://api.github.com/',
     'headers' => [

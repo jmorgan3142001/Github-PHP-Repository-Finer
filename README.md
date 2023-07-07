@@ -2,6 +2,8 @@
 
 -This program uses the PHP HTTP Library, Guzzle. To run this program, Guzzle must be installed by using the command 'composer require guzzlehttp/guzzle' on the console in the project file.
 
+-User will need to imput their own GitHub API token at the top of the db_refresh.php file where '$token = 'YOUR_TOKEN_HERE';' is to be able to access the GitHub API. Ensure that the token supports viewing public repositories.
+
 -Requires a connection to a MySQL database and uses the mysqli PHP library
 
 -To set up the table used by the program, write following query to the MySQL database:
