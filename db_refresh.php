@@ -3,8 +3,6 @@
 require 'vendor/autoload.php';
 require 'DBConnect.php';
 
-$this_url = $_SERVER['SERVER_NAME'];
-
 //open api connection
 $token = 'YOUR_TOKEN_HERE';
 $client = new \GuzzleHttp\Client([
@@ -67,6 +65,6 @@ $stmt->close();
 $mysqli->close();
 
 //automatically redirects the user to the home page after the completion
-echo "<script>window.location.replace('$this_url');</script>";
+echo "<script>window.location.replace('index.php');</script>";
 
 ?>
