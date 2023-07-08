@@ -4,6 +4,7 @@ require 'vendor/autoload.php';
 require 'DBConnect.php';
 
 //open api connection
+
 $token = 'YOUR_TOKEN_HERE';
 $client = new \GuzzleHttp\Client([
     'base_uri' => 'https://api.github.com/',
@@ -65,6 +66,6 @@ $stmt->close();
 $mysqli->close();
 
 //automatically redirects the user to the home page after the completion
-echo "<script>window.location.replace('index.php');</script>";
+echo "<script>window.location.replace('/index.php');</script>";
 
 ?>

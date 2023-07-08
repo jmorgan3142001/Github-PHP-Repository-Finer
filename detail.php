@@ -44,7 +44,7 @@ if($_REQUEST['id'] < 1){
 }
 echo "</table>";
 
-echo "<h4 class='mx-auto w-25 border border-dark p-3 m-3 text-center'>Click <a href='index.php'><u>HERE</u></a> to return the the home page</h4>";
+echo "<h4 class='mx-auto w-25 border border-dark p-3 m-3 text-center'>Click <a href='/index.php'><u>HERE</u></a> to return the the home page</h4>";
 
 $mysqli->close();
 
