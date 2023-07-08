@@ -15,7 +15,7 @@
 
 require 'DBConnect.php';
 
-echo "<h1 class='bg-dark text-light w-50 m-3 p-3 mx-auto text-center rounded'>Top <u>100</u> Public PHP Github Repositories</h2>";
+echo "<h1 class='bg-dark text-light w-50 m-3 p-3 mx-auto text-center rounded'>Top <b><u>100</u></b> Public PHP Github Repositories</h2>";
 echo "<h5 class='mx-auto w-25 border border-dark p-1 m-3 text-center'>Click <a href='db_refresh.php'><u>HERE</u></a> to refresh the database</h5>";
 
 //Retrieves all of the data from the repos table
