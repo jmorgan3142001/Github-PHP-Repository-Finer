@@ -73,7 +73,12 @@ if($query_data == false) die('DB Error: '.$mysqli->error);
 echo "<table border='1' class='table table-striped table-sm w-25 mx-auto'>";
 echo "<thead class='thead-dark'><tr><th scope='col'>Rank</th><th scope='col'>Name</th><th scope='col'>&nbsp# of Stars&nbsp</th></tr></thead>";
 while ($row = $query_data->fetch_assoc()) {
-    echo "<tr><th scope='row' id='".($row['id']+1)."'>".($row['id']+1)."</th><td><a href='detail.php/?id=".$row['id']."'>".$row['name']."</a></td><td>".$row['stars']."</td></tr>";
+    if($row['id']+1 != $_REQUEST['rank_search']){
+        echo "<tr><th scope='row' id='".($row['id']+1)."'>".($row['id']+1)."</th><td><a href='detail.php/?id=".$row['id']."'>".$row['name']."</a></td><td>".$row['stars']."</td></tr>";
+    } else {
+        //Hightlights the index searched for by rank search 
+        echo "<tr class='bg-dark'><th scope='row' class='text-light' id='".($row['id']+1)."'>".($row['id']+1)."</th><td><a href='detail.php/?id=".$row['id']."'>".$row['name']."</a></td><td class='text-light'>".$row['stars']."</td></tr>";
+    }
 }
 echo "</table>";
 
