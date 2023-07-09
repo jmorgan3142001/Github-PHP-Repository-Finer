@@ -24,36 +24,36 @@ if($_REQUEST['name_search']){
 }
 
 //gives the user the option to search directly for a repository by rank
+$rank_placeholder = 'Search by Repository Rank';
+if($_REQUEST['rank_search'] and ($_REQUEST['rank_search'] < 1 or $_REQUEST['rank_search'] > 100)){
+    $rank_placeholder = 'Value must be an integer between 1 and 100.';
+}
 echo '
     <form action="index.php" method="POST"> 
         <div class="input-group mb-3 w-25 mx-auto float-left">
             <div class="input-group-prepend">
                 <button class="btn btn-secondary" type="submit" value="submit">Search</button>
             </div>
-            <input type="text" class="form-control text-right" placeholder="Search by Rank Number" aria-label="search_rank" aria-describedby="basic-addon1" name="rank_search">';
-if($_REQUEST['rank_search'] and ($_REQUEST['rank_search'] < 1 or $_REQUEST['rank_search'] > 100)){
-    echo '<div class="text-danger">Rank Search must be an integer between the values of 1 and 100.</div>';
-}
-echo '
+            <input type="text" class="form-control text-right" placeholder="'.$rank_placeholder.'" aria-label="search_rank" aria-describedby="basic-addon1" name="rank_search">
         </div>
     </form>
 ';
 
 //gives the user the option to search directly for a repository by name
-$placeholder = 'Search by Repository Name';
+$name_placeholder = 'Search by Repository Name';
 if($_REQUEST['name_search']){
     while ($row = $query_data->fetch_assoc()) {
         if(strtoupper($row['name']) == strtoupper($_REQUEST['name_search'])){
             echo "<script>window.location.replace('detail.php/?id=".$row['id']."');</script>"; //redirects user the the detail page of a repository when it is found
         }
     }
-    $placeholder = $_REQUEST['name_search'].' - Not Found.';
+    $name_placeholder = $_REQUEST['name_search'].' - Not Found.';
 }
 
 echo '
     <form action="index.php" method="POST">
         <div class="input-group mb-3 w-25 mx-auto float-right">
-            <input type="text" placeholder="'.$placeholder.'" class="form-control" aria-label="search_name" aria-describedby="basic-addon2" name="name_search">
+            <input type="text" placeholder="'.$name_placeholder.'" class="form-control" aria-label="search_name" aria-describedby="basic-addon2" name="name_search">
             <div class="input-group-append">
                 <button class="btn btn-secondary" type="submit" value="submit">Search</button>
             </div>
